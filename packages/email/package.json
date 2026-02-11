@@ -32,7 +32,7 @@
     "devDependencies": {
         "@onlook/eslint": "*",
         "@onlook/typescript": "*",
-        "@react-email/preview-server": "4.3.1",
+        "@react-email/preview-server": "5.2.8",
         "eslint": "^9.0.0",
         "typescript": "^5.5.4"
     },
