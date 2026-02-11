@@ -1,25 +1,25 @@
 ---
-title: Development Setup
-description: Setup instructions for contributors and local development
+title: 开发环境搭建
+description: 贡献者和本地开发的搭建说明
 ---
 
-# Development Setup
+# 开发环境搭建
 
-This guide will set you up with a local development environment for Onlook. This involves a Next.js app, a Supabase backend, and the ability to run dev containers with Codesandbox.
+本指南将帮助你搭建 Onlook 的本地开发环境。涉及一个 Next.js 应用程序、一个 Supabase 后端，以及使用 Codesandbox 运行开发容器的能力。
 
-> **Note**: This guide is for development and contributing to Onlook. For deploying Onlook for production use, see [Self-Hosting](/self-hosting).
+> **注意**：本指南适用于 Onlook 的开发和贡献。若需将 Onlook 部署用于生产环境，请参见 [自托管](/self-hosting)。
 
-## Prerequisites
+## 前置条件
 
-These are the prerequisites for setting up Onlook development environment.
+以下是搭建 Onlook 开发环境的前置条件。
 
-- [Bun](https://bun.sh) - Enables running the monorepo
-- [Docker](https://docs.docker.com/get-started/get-docker/) - Enables running the Supabase backend
-- [Node](https://nodejs.org/en/download/) – Minimum version `v20.16.0` or latest
+- [Bun](https://bun.sh) - 支持运行 monorepo  
+- [Docker](https://docs.docker.com/get-started/get-docker/) - 支持运行 Supabase 后端  
+- [Node](https://nodejs.org/en/download/) – 最低版本 `v20.16.0` 或最新版
 
-## Setup
+## 搭建步骤
 
-### 1. Clone the repository
+### 1. 克隆仓库
 
    ```bash
    git clone https://github.com/onlook-dev/onlook.git
@@ -27,82 +27,83 @@ These are the prerequisites for setting up Onlook development environment.
    bun install
    ```
 
-### 2. Run backend
+### 2. 启动后端
 
-   Make sure you have Docker running from the instructions above.
+   确保你已经按照上述说明启动了 Docker。
 
    ```bash
    bun backend:start
    ```
 
-    Grab the `anon key` and `service role key` from the output. We'll use these in the environment setup step.
+    从输出中获取 `anon key` 和 `service role key`。我们将在环境配置步骤中使用它们。
 
-### 3. Get API keys
+### 3. 获取 API 密钥
 
-#### a. Get Codesandbox API key
+#### a. 获取 Codesandbox API 密钥
 
-1. Go to [Codesandbox Dashboard](https://codesandbox.io/dashboard)
-2. Click on settings in the left menu, your workspace setting should open
-3. Navigate to the "API" tab
-4. Click "Create API Token" and generate an API token
-5. Copy the token and save it for the environment setup step
+1. 访问 [Codesandbox 控制台](https://codesandbox.io/dashboard)  
+2. 点击左侧菜单的设置，进入你的工作区设置  
+3. 导航至“API”标签页  
+4. 点击“创建 API Token”，生成 API 令牌  
+5. 复制该令牌并保存，用于环境配置步骤  
 
-Note: We plan on enabling running the dev containers with Docker Desktop in the future after we figure out the best API integration. 
+注意：我们计划在确定最佳 API 集成方案后，未来支持使用 Docker Desktop 运行开发容器。
 
-#### b. Get OpenRouter API key
+#### b. 获取 OpenRouter API 密钥
 
-Request an API key from OpenRouter. This is used for chatting with your project. https://openrouter.ai/settings/keys
+向 OpenRouter 申请 API 密钥，用于与你的项目聊天。https://openrouter.ai/settings/keys
 
-#### c. Get Fast Apply API key
+#### c. 获取 Fast Apply API 密钥
 
-    For applying AI code, SOTA is to use fast apply models in order to resolve the code change. There are two options for Fast Apply providers:
+    为了应用 AI 代码，最先进的方法是使用 Fast Apply 模型解决代码变更。Fast Apply 提供商有两个选项：
 
     - [MorphLLM](https://morphllm.com/dashboard)
     - [Relace](https://app.relace.ai/settings/api-keys)
 
-    You only need to get one of the keys and set it in the environment variables in later steps.
+    你只需要获取其中一个密钥，并在后续步骤的环境变量中进行设置。
 
-### 4. Set environment variables
+### 4. 设置环境变量
 
-
-Run the interactive environment setup script:
+运行交互式环境配置脚本：
 
 ```bash
 bun run setup:env
 ```
 
-**Troubleshooting**: If you run into issues with the interactive environment setup script, use this instruciton to set the environment variables manually: [appendix](/developers/appendix)
+**故障排查**：如果交互式环境配置脚本出现问题，请参考此说明手动设置环境变量：[附录](/developers/appendix)
 
-### 5. Initialize the database
+### 5. 初始化数据库
 
-Set up the database schema. You will need to run this command every time there's a change to the database schema.
+设置数据库架构。每当数据库架构有变更时，都需运行此命令。
 
-Note: If prompted for interaction such as choosing an option, cd into `packages/db` and run `bun run db:push` to use interactive mode.
+注意：若提示选择项等交互操作，进入 `packages/db` 目录，运行 `bun run db:push` 启用交互模式。
+
    ```bash
    bun db:push
    ```
 
-### 6. Seed the database with test data
+### 6. 用测试数据初始化数据库
 
-Seed the database with test data. This will create test users and projects.
+用测试数据初始化数据库，将创建测试用户和项目。
+
    ```bash
    bun db:seed
    ```
 
-### 7. Run development server
+### 7. 运行开发服务器
 
    ```bash
    bun dev
    ```
 
-Go to [http://localhost:3000](http://localhost:3000) to see the app running. You're all set for development!
+访问 [http://localhost:3000](http://localhost:3000) 查看应用运行情况。至此，开发环境搭建完成！
 
-## What's Next?
+## 下一步？
 
-Now that you have Onlook running locally, explore these resources to make your first contribution or learn more about the architecture. Understanding how Onlook works will help you contribute more effectively to this visual editor for React and TailwindCSS.
+现在你已在本地运行 Onlook，可以浏览以下资源，开始你的第一次贡献或深入了解架构。理解 Onlook 的工作原理将帮助你更有效地为这个基于 React 和 TailwindCSS 的可视化编辑器贡献代码。
 
 <Cards>
-  <Card title="Learn about Architecture" href="/developers/architecture" />
-  <Card title="How to Contribute" href="/developers" />
-  <Card title="Troubleshooting" href="/developers/troubleshooting" />
+  <Card title="了解架构" href="/developers/architecture" />
+  <Card title="如何贡献" href="/developers" />
+  <Card title="故障排查" href="/developers/troubleshooting" />
 </Cards>

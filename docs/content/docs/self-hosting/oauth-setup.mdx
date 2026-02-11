@@ -1,147 +1,147 @@
 ---
-title: OAuth Setup
-description: Set up social login with GitHub, Google, and other providers
+title: OAuth 设置
+description: 使用 GitHub、Google 及其他提供者设置社交登录
 ---
 
-# OAuth Setup
+# OAuth 设置
 
-Enable users to sign in with their favorite social accounts like GitHub, Google, and more.
+让用户可以使用他们喜欢的社交账号登录，如 GitHub、Google 等。
 
-## What is OAuth?
+## 什么是 OAuth？
 
-OAuth lets users log in using accounts they already have (like GitHub or Google) instead of creating new passwords. It's faster and more secure.
+OAuth 允许用户使用他们已有的账号（如 GitHub 或 Google）登录，而无需创建新的密码。这既更快又更安全。
 
-## GitHub OAuth Setup
+## GitHub OAuth 设置
 
-> For detailed instructions, see the [Supabase GitHub OAuth documentation](https://supabase.com/docs/guides/auth/social-login/auth-github).
+> 详细说明请参阅 [Supabase GitHub OAuth 文档](https://supabase.com/docs/guides/auth/social-login/auth-github)。
 
-### 1. Create GitHub OAuth App
+### 1. 创建 GitHub OAuth 应用
 
-1. Go to [GitHub Developer Settings](https://github.com/settings/developers)
-2. Click **"New OAuth App"**
-3. Fill in the details:
-   - **Application name**: `Your Onlook App`
-   - **Homepage URL**: `http://localhost:3000` (or your production domain)
-   - **Authorization callback URL**: 
-     - **Local development**: `http://localhost:54321/auth/v1/callback`
-     - **Production**: `https://your-production-domain/auth/v1/callback`
-4. Click **"Register application"**
-5. Copy your **Client ID** and **Client Secret**
+1. 访问 [GitHub 开发者设置](https://github.com/settings/developers)
+2. 点击 **“New OAuth App”**
+3. 填写信息：
+   - **应用名称**：`Your Onlook App`
+   - **主页 URL**：`http://localhost:3000`（或你的生产域名）
+   - **授权回调 URL**：
+     - **本地开发**：`http://localhost:54321/auth/v1/callback`
+     - **生产环境**：`https://your-production-domain/auth/v1/callback`
+4. 点击 **“Register application”**
+5. 复制你的 **Client ID** 和 **Client Secret**
 
-### 2. Configure Supabase
+### 2. 配置 Supabase
 
-1. Open your Supabase dashboard
-2. Go to **Authentication** → **Providers**
-3. Find **GitHub** and click **Enable**
-4. Paste your:
+1. 打开你的 Supabase 控制面板
+2. 进入 **Authentication** → **Providers**
+3. 找到 **GitHub** 并点击 **Enable**
+4. 粘贴你的：
    - **Client ID**
    - **Client Secret**
-5. Click **Save**
+5. 点击 **Save**
 
-### 3. Update Your App
+### 3. 更新你的应用
 
-Add the GitHub provider to your login page:
+在登录页添加 GitHub 提供者：
 
 ```tsx
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-// Add GitHub login button
+// 添加 GitHub 登录按钮
 const signInWithGitHub = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'github'
   })
-  if (error) console.error('Error:', error)
+  if (error) console.error('错误:', error)
 }
 ```
 
-## Google OAuth Setup
+## Google OAuth 设置
 
-> For detailed instructions, see the [Supabase Google OAuth documentation](https://supabase.com/docs/guides/auth/social-login/auth-google).
+> 详细说明请参阅[Supabase Google OAuth 文档](https://supabase.com/docs/guides/auth/social-login/auth-google)。
 
-### 1. Create Google OAuth App
+### 1. 创建 Google OAuth 应用
 
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select existing one
-3. Go to **APIs & Services** → **Credentials**
-4. Click **"Create Credentials"** → **"OAuth client ID"**
-5. Choose **"Web application"**
-6. Add authorized redirect URIs:
-   - **Local development**: `http://localhost:54321/auth/v1/callback`
-   - **Production**: `https://your-production-domain/auth/v1/callback`
-7. Copy your **Client ID** and **Client Secret**
+1. 进入 [Google Cloud Console](https://console.cloud.google.com/)
+2. 创建新项目或选择已有项目
+3. 进入 **APIs & Services** → **Credentials**
+4. 点击 **“Create Credentials”** → **“OAuth client ID”**
+5. 选择 **“Web application”**
+6. 添加授权重定向 URI：
+   - **本地开发**：`http://localhost:54321/auth/v1/callback`
+   - **生产环境**：`https://your-production-domain/auth/v1/callback`
+7. 复制你的 **Client ID** 和 **Client Secret**
 
-### 2. Configure Supabase
+### 2. 配置 Supabase
 
-1. In Supabase dashboard, go to **Authentication** → **Providers**
-2. Find **Google** and click **Enable**
-3. Paste your **Client ID** and **Client Secret**
-4. Click **Save**
+1. 在 Supabase 控制面板，进入 **Authentication** → **Providers**
+2. 找到 **Google** 并点击 **Enable**
+3. 粘贴你的 **Client ID** 和 **Client Secret**
+4. 点击 **Save**
 
-### 3. Add to Your App
+### 3. 添加到你的应用
 
 ```tsx
 const signInWithGoogle = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google'
   })
-  if (error) console.error('Error:', error)
+  if (error) console.error('错误:', error)
 }
 ```
 
-## Other Providers
+## 其他提供者
 
-Supabase supports many OAuth providers. For comprehensive setup instructions for all providers, see the [Supabase Social Login documentation](https://supabase.com/docs/guides/auth/social-login).
+Supabase 支持多种 OAuth 提供者。有关全部提供者的完整设置说明，请参阅[Supabase 社交登录文档](https://supabase.com/docs/guides/auth/social-login)。
 
-Popular providers include:
+常用提供者包括：
 
-- **Discord**: Follow similar steps at [Discord Developer Portal](https://discord.com/developers/applications)
-- **Twitter**: Set up at [Twitter Developer Portal](https://developer.twitter.com/)
-- **Facebook**: Configure at [Facebook Developers](https://developers.facebook.com/)
-- **Apple**: Set up at [Apple Developer](https://developer.apple.com/)
+- **Discord**：请参照 [Discord Developer Portal](https://discord.com/developers/applications) 执行类似步骤
+- **Twitter**：在 [Twitter Developer Portal](https://developer.twitter.com/) 设置
+- **Facebook**：在 [Facebook Developers](https://developers.facebook.com/) 配置
+- **Apple**：在 [Apple Developer](https://developer.apple.com/) 设置
 
-> **Note**: For each provider, remember to add both local (`http://localhost:54321/auth/v1/callback`) and production (`https://your-production-domain/auth/v1/callback`) redirect URIs to avoid redirect_uri_mismatch errors.
+> **注意**：每个提供者都需添加本地 (`http://localhost:54321/auth/v1/callback`) 和生产 (`https://your-production-domain/auth/v1/callback`) 的重定向 URI，否则会出现 redirect_uri_mismatch 错误。
 
-## Important Notes
+## 重要说明
 
-### Environment Variables
+### 环境变量
 
-Make sure your `.env.local` has:
+确保你的 `.env.local` 包含：
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
-### Testing
+### 测试
 
-1. Start your Onlook app
-2. Click the OAuth login button
-3. You should be redirected to the provider (GitHub/Google)
-4. After authorizing, you'll be redirected back to your app
-5. Check if the user is logged in
+1. 启动你的 Onlook 应用
+2. 点击 OAuth 登录按钮
+3. 你将被重定向到相应提供者（GitHub/Google）
+4. 授权后，你会被重定向回应用
+5. 检查用户是否已登录
 
-## Troubleshooting
+## 故障排除
 
-**"Invalid redirect URI"**
-- Double-check your callback URL in the OAuth app settings
-- Make sure it matches exactly: `http://localhost:54321/auth/v1/callback`
+**“Invalid redirect URI”**
+- 仔细检查 OAuth 应用中配置的回调 URL
+- 确认完全匹配：`http://localhost:54321/auth/v1/callback`
 
-**"Client ID not found"**
-- Verify you copied the Client ID and Client Secret correctly
-- Check that the OAuth provider is enabled in Supabase
+**“Client ID not found”**
+- 确认你正确复制了 Client ID 和 Client Secret
+- 检查 Supabase 中 OAuth 提供者是否已启用
 
-**"Access denied"**
-- Ensure your OAuth app is public (not in development mode)
-- For GitHub: Check that users have access to your organization (if applicable)
+**“Access denied”**
+- 确定 OAuth 应用为公开状态（非开发模式）
+- GitHub 用户需确保有权限访问你的组织（如适用）
 
-## Next Steps
+## 后续步骤
 
-Once OAuth is working:
-- Customize the login UI
-- Add user profile information
-- Set up role-based access
-- Configure email notifications
+OAuth 正常后：
+- 定制登录界面
+- 添加用户资料信息
+- 设置基于角色的访问控制
+- 配置邮件通知
 
-That's it! Your users can now sign in with their social accounts. 🎉
+就是这样！现在你的用户可以使用社交账户登录啦。🎉

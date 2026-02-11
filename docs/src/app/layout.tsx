@@ -7,7 +7,7 @@ import { RootProvider } from 'fumadocs-ui/provider';
 import { Geist } from 'next/font/google';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
-import RB2BLoader from '@/components/rb2b-loader';
+// import RB2BLoader from '@/components/rb2b-loader';
 
 const geist = Geist({
     subsets: ['latin'],
@@ -15,15 +15,15 @@ const geist = Geist({
 });
 
 export const metadata = {
-    metadataBase: new URL('https://docs.onlook.dev'),
+    metadataBase: new URL('https://onlook.zhcndoc.com'),
     title: {
-        default: 'Onlook Docs',
-        template: '%s – Onlook Docs',
+        default: 'Onlook 中文文档',
+        template: '%s – Onlook 中文文档',
     },
     description:
-        'Official documentation for Onlook – an open-source "Cursor for Designers" that lets you visually edit React & Tailwind projects.',
+        'Onlook 中文文档 – 一个开源的 "Cursor for Designers"，让你可以可视化编辑 React 和 Tailwind 项目。',
     openGraph: {
-        siteName: 'Onlook Docs',
+        siteName: 'Onlook 中文文档',
         type: 'website',
     },
     twitter: {
@@ -47,14 +47,17 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export default function Layout({ children }: { children: ReactNode }) {
     return (
-        <html lang="en" className={geist.variable} suppressHydrationWarning>
+        <html lang="zh-CN" className={geist.variable} suppressHydrationWarning>
+            <head>
+                <Script async src="https://www.zhcndoc.com/js/common.js"></Script>
+            </head>
             <body className="flex flex-col min-h-screen">
-                {isProduction && (
+                {/* {isProduction && (
                     <>
                         <Script src="https://z.onlook.com/cdn-cgi/zaraz/i.js" strategy="lazyOnload" />
                         <RB2BLoader />
                     </>
-                )}
+                )} */}
                 <RootProvider>
                     <DocsLayout tree={source.pageTree} {...docsOptions}>
                         {children}

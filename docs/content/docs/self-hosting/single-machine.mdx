@@ -1,177 +1,178 @@
 ---
-title: Single Machine
-description: Deploy Onlook on a single VM or machine using standalone build for production
+title: 单机部署
+description: 使用独立构建将 Onlook 部署在单个虚拟机或机器上进行生产环境
 ---
 
-# Single Machine Deployment
+# 单机部署
 
-Deploy Onlook on a single virtual machine or physical server using the standalone build. This creates a self-contained production deployment without Docker containers, ideal for small teams and simple production setups.
+使用独立构建将 Onlook 部署在单个虚拟机或物理服务器上。这会创建一个独立的生产环境部署，无需 Docker 容器，适合小团队和简单的生产环境。
 
-## Prerequisites
+## 前提条件
 
-**System Requirements:**
-- 4+ CPU cores
-- 8GB+ RAM (16GB recommended)
-- 50GB+ available disk space
+**系统要求：**
+- 4核以上 CPU
+- 8GB 以上内存（推荐 16GB）
+- 50GB 以上可用磁盘空间
 
-**Software Requirements:**
-- [Bun](https://bun.sh) - Package manager and runtime
-- [Node.js](https://nodejs.org/en/download) v20.16.0+ (avoid v20.11.0)
+**软件要求：**
+- [Bun](https://bun.sh) - 包管理器和运行时
+- [Node.js](https://nodejs.org/en/download) v20.16.0 及以上（避免使用 v20.11.0）
 - [Git](https://git-scm.com/downloads)
 
-## Setup
+## 安装步骤
 
-### 1. Clone the Repository
+### 1. 克隆代码库
 
 ```bash
 git clone https://github.com/onlook-dev/onlook.git
 cd onlook
 
-# Install dependencies
+# 安装依赖
 bun install
 ```
 
-### 2. Setup Environment Variables
+### 2. 设置环境变量
 
-Create your environment configuration:
+创建您的环境配置：
 
 ```bash
-# Run interactive environment setup
+# 运行交互式环境配置
 bun run setup:env
 ```
 
-**Required variables:**
-- **Supabase**: Production database URL and API keys
-- **OpenRouter API Key**: For AI chat features  
-- **CodeSandbox Token**: For development containers
+**必填变量：**
+- **Supabase**：生产数据库 URL 及 API 密钥
+- **OpenRouter API Key**：用于 AI 聊天功能  
+- **CodeSandbox Token**：用于开发容器
 
-For detailed instructions on obtaining these API keys, see the [development setup guide](/developers/running-locally#3-get-api-keys).
+有关如何获取这些 API 密钥的详细说明，请参见[开发环境搭建指南](/developers/running-locally#3-get-api-keys)。
 
-### 3. Start Backend Services
+### 3. 启动后端服务
 
 ```bash
 bun backend:start
 ```
 
-This starts Supabase locally with PostgreSQL database, authentication, and storage. The services will be available at:
+这将在本地启动 Supabase，包括 PostgreSQL 数据库、认证和存储。服务可通过以下地址访问：
 - **Supabase API**: http://127.0.0.1:54321
 - **PostgreSQL**: http://127.0.0.1:54322
-- **Supabase Dashboard**: http://127.0.0.1:54323
+- **Supabase 控制台**: http://127.0.0.1:54323
 
-### 4. Initialize Database
+### 4. 初始化数据库
 
 ```bash
-# Push database schema
+# 推送数据库架构
 bun db:push
 ```
 
-### 5. Build and Deploy Standalone Application
+### 5. 构建并部署独立应用
 
 ```bash
-# Build standalone production deployment
+# 构建独立生产部署包
 bun run preview:standalone
 ```
 
-This creates a self-contained production build with:
-- **Standalone server**: Independent Node.js server with all dependencies
-- **Static assets**: All static files bundled for production
-- **Optimized build**: Minified and optimized for performance
-- **Production ready**: Configured for production environment
+此操作会生成一个自包含的生产构建包，包含：
+- **独立服务器**：独立的 Node.js 服务器及所有依赖
+- **静态资源**：打包好的所有静态文件
+- **优化构建**：压缩并优化性能
+- **生产就绪**：配置为生产环境使用
 
-## Verification
+## 验证
 
-Once running, verify your deployment:
+运行后，验证部署状态：
 
-- **Main Application**: http://localhost:3000
-- **Supabase Dashboard**: http://localhost:54323
+- **主应用**: http://localhost:3000
+- **Supabase 控制台**: http://localhost:54323
 
-Check all services are running:
+检查所有服务是否运行中：
 ```bash
-# Check application
+# 检查应用
 curl http://localhost:3000
 
-# Check Supabase API
+# 检查 Supabase API
 curl http://localhost:54321/rest/v1/
 ```
 
-## Optional: Production Hardening
+## 可选：生产环境加固
 
-### Running in Production
-The standalone build creates a complete production server. You can start it in different ways:
+### 生产环境运行
+
+独立构建会创建完整的生产服务器，你可以通过多种方式启动：
 
 ```bash
-# Option 1: Direct command
+# 方式一：直接执行命令
 bun .next/standalone/apps/web/client/server.js
 
-# Option 2: Use bun script
+# 方式二：使用 bun 脚本
 bun run start:standalone
 
-# Option 3: With PM2 for process management
+# 方式三：使用 PM2 进程管理
 pm2 start .next/standalone/apps/web/client/server.js --name onlook
 ```
 
-### Process Management (Recommended)
+### 进程管理（推荐）
 
-For production deployments, use a process manager like PM2:
+为了生产部署推荐使用进程管理工具，例如 PM2：
 
 ```bash
-# Install PM2 globally
+# 全局安装 PM2
 bun add -g pm2
 
-# Start with PM2
+# 使用 PM2 启动
 pm2 start .next/standalone/apps/web/client/server.js --name onlook
 
-# Save PM2 configuration
+# 保存 PM2 配置
 pm2 save
 
-# Setup auto-start on boot
+# 设置开机自启
 pm2 startup
 ```
 
-## Troubleshooting
+## 故障排查
 
-**Common Issues:**
+**常见问题：**
 
-- **Port conflicts**: Change ports in configuration if 3000, 54321, or 54322 are in use
-- **Build failures**: Run `rm -rf node_modules && bun install` then retry build
-- **Database connection**: Ensure `bun backend:start` completed successfully
-- **Standalone server won't start**: Verify the build completed with `ls -la .next/standalone/apps/web/client/`
-- **Memory issues**: Increase Node.js memory limit with `NODE_OPTIONS="--max-old-space-size=4096"`
+- **端口冲突**：如端口 3000、54321 或 54322 被占用，请修改配置端口
+- **构建失败**：执行 `rm -rf node_modules && bun install` 后重试构建
+- **数据库连接失败**：确认 `bun backend:start` 是否成功完成
+- **独立服务器无法启动**：确认构建是否完成，可以执行 `ls -la .next/standalone/apps/web/client/` 检查
+- **内存问题**：通过设置 `NODE_OPTIONS="--max-old-space-size=4096"` 增加 Node.js 内存限制
 
-**Performance Optimization:**
-- Use PM2 for process management and automatic restarts
-- Configure reverse proxy (Nginx/Apache) for SSL and caching
-- Use SSD storage for better I/O performance
-- Monitor memory usage and restart if needed
+**性能优化建议：**
+- 使用 PM2 管理进程和实现自动重启
+- 配置反向代理（Nginx/Apache）进行 SSL 和缓存管理
+- 使用 SSD 存储提升 I/O 性能
+- 监控内存使用，必要时重启服务
 
-## Use Cases
+## 适用场景
 
-**Ideal for:**
-- Small team production deployments (5-20 users)
-- Single server setups
-- Cost-conscious deployments
-- Simple production environments
-- Organizations avoiding container complexity
+**适合：**
+- 小团队生产部署（5-20 用户）
+- 单机服务器环境
+- 成本敏感型部署
+- 简单的生产环境
+- 避免容器复杂性的组织
 
-**Advantages over Docker:**
-- No container orchestration complexity
-- Direct server access and debugging
-- Lower resource overhead
-- Simpler deployment process
-- Standard system service management
+**相比 Docker 的优势：**
+- 无容器编排复杂性
+- 直接服务器访问和调试
+- 更低资源开销
+- 更简单的部署流程
+- 标准的系统服务管理
 
-**Advantages over Development Mode:**
-- Production-optimized build
-- Better performance and security
-- Reduced memory footprint
-- Self-contained deployment
-- No development dependencies required
+**相比开发模式的优势：**
+- 生产环境优化构建
+- 更优性能和安全性
+- 降低内存占用
+- 自包含部署包
+- 无需开发时依赖
 
-**Considerations:**
-- Single point of failure
-- Manual scaling required
-- Requires system administration knowledge
-- Less portable than containers
-- Manual backup and recovery processes
+**需要考虑的事项：**
+- 单点故障风险
+- 需手动扩展
+- 需要系统管理知识
+- 不如容器便携
+- 手动备份和恢复流程
 
-For high-availability production deployments, consider [Docker Compose](/self-hosting/docker-compose) or [Cloud Deployment](/self-hosting/cloud-deployment) options.
+对于高可用生产部署，建议考虑[Docker Compose](/self-hosting/docker-compose) 或 [云端部署](/self-hosting/cloud-deployment) 方案。

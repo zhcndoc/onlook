@@ -1,37 +1,37 @@
 ---
-title: Appendix
-description: Appendix for developer setup
+title: 附录
+description: 开发者环境配置附录
 ---
 
-## Set up environment variables manually (optional)
+## 手动设置环境变量（可选）
 
-##### 1. In `apps/web/client`
-Create a copy of the `.env.example` file under the `apps/web/client` directory and name it `.env`. Fill in the values with your own API keys.
+##### 1. 在 `apps/web/client` 中
+在 `apps/web/client` 目录下复制一份 `.env.example` 文件，并命名为 `.env`。将其中的值填写为你自己的 API 密钥。
 
-It should look like this:
+文件内容示例如下：
 
 ```properties
-# ------------- Required Keys -------------
+# ------------- 必填密钥 -------------
 
-# Supabase - Enables our backend such as database and auth
+# Supabase - 支持我们的后端服务，如数据库和认证
 NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321
-NEXT_PUBLIC_SUPABASE_ANON_KEY="<Fill in from content after running supabase start>"
+NEXT_PUBLIC_SUPABASE_ANON_KEY="<运行 supabase start 后的内容中填入>"
 SUPABASE_DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:54322/postgres
-SUPABASE_SERVICE_ROLE_KEY="<Your Supabase service role key>"
+SUPABASE_SERVICE_ROLE_KEY="<你的 Supabase 服务角色密钥>"
 
-# OpenRouter - Enables AI chat. Other providers are optional below
-OPENROUTER_API_KEY="<Your api key from https://openrouter.ai/settings/keys>"
+# OpenRouter - 支持 AI 聊天。其他供应商为可选
+OPENROUTER_API_KEY="<你在 https://openrouter.ai/settings/keys 获得的 API 密钥>"
 
-# Codesandbox - Used to host user apps. Other providers may be supported in the future. May be optional in the future.
-CSB_API_KEY="<Your api key from https://codesandbox.io/t/api>"
+# Codesandbox - 用于托管用户应用，未来可能支持其他供应商，未来可能为可选。
+CSB_API_KEY="<你在 https://codesandbox.io/t/api 获取的 API 密钥>"
 ```
 
-##### 2. In `packages/db`
+##### 2. 在 `packages/db` 中
 
-Create a copy of the `.env.example` file under the `packages/db` directory and name it `.env`. Fill in the values with the values from the output of the `bun backend:start` command.
+在 `packages/db` 目录下复制一份 `.env.example` 文件，并命名为 `.env`。将其中的值填写为 `bun backend:start` 命令输出中的对应值。
 
 ```properties
 SUPABASE_DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:54322/postgres
 SUPABASE_URL=http://localhost:54321
-SUPABASE_SERVICE_ROLE_KEY=<Your service role key from Supabase>
+SUPABASE_SERVICE_ROLE_KEY=<你在 Supabase 获得的服务角色密钥>
 ```

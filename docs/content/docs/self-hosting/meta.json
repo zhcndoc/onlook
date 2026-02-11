@@ -1,5 +1,5 @@
 {
-    "title": "Self-Hosting",
+    "title": "自托管",
     "pages": [
         "single-machine",
         "docker-compose",

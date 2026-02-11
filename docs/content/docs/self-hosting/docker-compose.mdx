@@ -1,125 +1,125 @@
 ---
 title: Docker Compose
-description: Simple single-container deployment for small teams and basic self-hosting
+description: 适合小团队和基础自托管的简单单容器部署
 ---
 
 # Docker Compose
 
-Deploy Onlook using Docker Compose on VMs or local machines. This is a simple, single-container deployment designed for small teams and basic self-hosting needs. For enterprise-grade deployments requiring high availability and scalability, use the [Cloud Deployment](/self-hosting/cloud-deployment) option.
+使用 Docker Compose 在虚拟机或本地机器上部署 Onlook。这是一个简单的单容器部署，适合小团队和基础自托管需求。对于需要高可用性和可扩展性的企业级部署，请使用[云部署](/self-hosting/cloud-deployment)选项。
 
-## Prerequisites
+## 前提条件
 
-**System Requirements:**
-- 4+ CPU cores
-- 8GB+ RAM (16GB recommended)
-- 50GB+ available disk space
-- Docker 20.10+ and Docker Compose 2.0+
+**系统要求：**
+- 4核以上 CPU
+- 8GB 以上内存（推荐16GB）
+- 50GB 以上可用磁盘空间
+- Docker 20.10 及以上，Docker Compose 2.0 及以上
 
-**Software Requirements:**
-- [Bun](https://bun.sh) - Package manager and runtime
-- [Node.js](https://nodejs.org/en/download) v20.16.0+ (avoid v20.11.0)
+**软件要求：**
+- [Bun](https://bun.sh) - 包管理器和运行时
+- [Node.js](https://nodejs.org/en/download) v20.16.0及以上（避免使用 v20.11.0）
 - [Git](https://git-scm.com/downloads)
-- [Docker](https://docs.docker.com/get-docker/) & [Docker Compose](https://docs.docker.com/compose/install/)
+- [Docker](https://docs.docker.com/get-docker/) 和 [Docker Compose](https://docs.docker.com/compose/install/)
 
-## Basic Deployment
+## 基础部署
 
-> **Note**: This is a simple deployment suitable for small teams and testing. For development, use `bun dev` in the repository root.
+> **注意**：这是一个适合小团队和测试的简单部署。开发时请在代码库根目录使用 `bun dev`。
 
-### 1. Clone the Repository
+### 1. 克隆代码库
 
 ```bash
 git clone https://github.com/onlook-dev/onlook.git
 cd onlook
 
-# Install dependencies
+# 安装依赖
 bun install
 ```
 
-### 2. Setup Environment Variables
+### 2. 设置环境变量
 
-For Docker Compose deployment, you need to create a environment file.
+对于 Docker Compose 部署，需要创建环境变量文件。
 
 ```bash
-# Run interactive environment setup
+# 运行交互式环境设置
 bun run setup:env
 ```
 
-**Required variables:**
-- **Supabase**: Production database URL and API keys
-- **OpenRouter API Key**: For AI chat features  
-- **CodeSandbox Token**: For development containers
+**必填变量：**
+- **Supabase**：生产数据库 URL 和 API 密钥
+- **OpenRouter API Key**：AI 聊天功能所需  
+- **CodeSandbox Token**：用于开发容器
 
-For detailed instructions on obtaining these API keys, see the [development setup guide](/developers/running-locally#3-get-api-keys).
+有关获取这些 API 密钥的详细说明，请参见[开发设置指南](/developers/running-locally#3-get-api-keys)。
 
-### 3. Start Backend Services
+### 3. 启动后端服务
 
 ```bash
 bun backend:start
 ```
 
-This starts Supabase locally with PostgreSQL database, authentication, and storage. This will spin up a separate Docker compose service. For production supabase connection, change the Supabase API keys in the `.env` file.
+此命令将在本地启动 Supabase，包含 PostgreSQL 数据库、身份验证和存储服务。这将启动一个单独的 Docker Compose 服务。若连接生产 Supabase，请在 `.env` 文件中更改 Supabase API 密钥。
 
-### 4. Initialize Database
+### 4. 初始化数据库
 
 ```bash
-# Push database schema
+# 推送数据库架构
 bun db:push
 ```
 
-### 5. Deploy with Docker Compose
+### 5. 使用 Docker Compose 部署
 
-Deploy the production container from the repository root:
+在代码库根目录部署生产容器：
 
 ```bash
 docker-compose up -d
 ```
 
-This builds and starts:
-- **Web Application**: Production-built Next.js application (port 3000)
-- **Health checks**: Automatic container health monitoring
-- **Auto-restart**: Container restarts automatically on failure
+该命令构建并启动：
+- **Web 应用**：生产构建的 Next.js 应用（端口 3000）
+- **健康检查**：自动容器健康监控
+- **自动重启**：容器失败时自动重启
 
-**Note**: The Docker container uses `network_mode: "host"` to access the local Supabase services running on your host machine. This allows the container to connect to `http://127.0.0.1:54321` (Supabase API) and `127.0.0.1:54322` (PostgreSQL).
+**注意**：Docker 容器使用 `network_mode: "host"` 来访问运行在主机上的本地 Supabase 服务。这样容器可以连接到 `http://127.0.0.1:54321`（Supabase API）和 `127.0.0.1:54322`（PostgreSQL）。
 
-### 6. Verify Deployment
+### 6. 验证部署
 
-- **Main Application**: http://localhost:3000
-- **Supabase Dashboard**: http://localhost:54323 (from backend:start)
+- **主应用**：http://localhost:3000
+- **Supabase 仪表盘**：http://localhost:54323（由 backend:start 启动）
 
-Check the service is running:
+检查服务运行状态：
 ```bash
 docker-compose ps
 curl http://localhost:3000
 ```
 
-## Troubleshooting
+## 故障排除
 
-**Common issues:**
-- **Port 3000 in use**: Stop other services or change port  
-- **Docker build fails**: Run `docker system prune` and retry
-- **Database connection**: Verify `bun backend:start` is running and Supabase is accessible at http://127.0.0.1:54321
-- **Container can't connect to Supabase**: Ensure `network_mode: "host"` is set in docker-compose.yml for localhost access
+**常见问题：**
+- **端口 3000 被占用**：停止其它服务或更换端口  
+- **Docker 构建失败**：运行 `docker system prune` 后重试
+- **数据库连接失败**：确认 `bun backend:start` 正在运行且 Supabase 可通过 http://127.0.0.1:54321 访问
+- **容器无法连接 Supabase**：确保在 docker-compose.yml 中设置了 `network_mode: "host"` 以访问本地主机
 
-## Limitations & Considerations
+## 限制与注意事项
 
-**This deployment is designed for simplicity, not high reliability:**
+**此部署追求简单性，不保证高可靠性：**
 
-**Limitations:**
-- Single container (single point of failure)
-- No built-in load balancing or auto-scaling  
-- Manual backup and disaster recovery
-- Limited to vertical scaling only
-- No high availability guarantees
+**限制：**
+- 单容器（单点故障）
+- 无内置负载均衡或自动扩展  
+- 备份和灾难恢复需手动操作
+- 只支持纵向扩展
+- 无高可用保障
 
-**Suitable for:**
-- Small teams (< 10 users)
-- Development/testing environments
-- Proof of concept deployments
-- Basic self-hosting needs
+**适用场景：**
+- 小团队（小于 10 用户）
+- 开发/测试环境
+- 概念验证部署
+- 基础自托管需求
 
-**Not suitable for:**
-- Mission-critical production workloads
-- Large teams requiring high availability
-- Environments needing 99.9%+ uptime
+**不适用场景：**
+- 关键生产工作负载
+- 需要高可用性的大团队
+- 需要 99.9% 以上运行时间的环境
 
-For enterprise-grade deployments, use the [Cloud Deployment](/self-hosting/cloud-deployment) option with proper redundancy and scaling.
+企业级部署请使用具备冗余和可扩展能力的[云部署](/self-hosting/cloud-deployment)选项。

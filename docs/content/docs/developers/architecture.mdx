@@ -1,83 +1,83 @@
 ---
-title: Architecture
-description: Overview of Onlook's architecture
+title: 架构
+description: Onlook 架构概述
 ---
 
-# Onlook Architecture
+# Onlook 架构
 
-Onlook is structured as a monorepo with several interconnected apps and packages, primarily built using Next.js, Supabase, TailwindCSS, and Drizzle.
+Onlook 采用 monorepo 结构，包含多个相互关联的应用和包，主要使用 Next.js、Supabase、TailwindCSS 和 Drizzle 构建。
 
 <div className="relative h-[500px] overflow-hidden">
   <iframe
     className="absolute top-0 left-0 h-full w-full"
     src="https://www.youtube.com/embed/iaixwRNjg4I"
-    title="Onlook Architecture Walkthrough"
+    title="Onlook 架构讲解"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowFullScreen
   ></iframe>
 </div>
 
-![Full Architecture](/images/full-architecture.png)
+![完整架构](/images/full-architecture.png)
 
-## Directory Structure
+## 目录结构
 
 ```
 onlook/
 |
 ├── apps/
-│   ├── web/                       # Web application components
-│   │   ├── client/                # Client-side application (Next.js)
-│   │   ├── preload/               # Preload scripts (TypeScript)
-│   │   └── server/                # Server-side code (Fastify.js - unused for now)
+│   ├── web/                       # Web 应用组件
+│   │   ├── client/                # 客户端应用（Next.js）
+│   │   ├── preload/               # 预加载脚本（TypeScript）
+│   │   └── server/                # 服务器端代码（Fastify.js - 目前未使用）
 │   │
-│   └── backend/                   # Backend (Supabase)
+│   └── backend/                   # 后端（Supabase）
 │   
 ├── packages/
-│   ├── models/                    # Shared data models and types
-│   ├── ui/                        # Reusable UI components and theming (ShadCN + TailwindCSS)
-│   ├── ai/                        # AI integration utilities (AI SDK)
-│   └── schema/                    # Shared schema for the application (Drizzle ORM)
+│   ├── models/                    # 共享数据模型和类型
+│   ├── ui/                        # 可复用 UI 组件和主题（ShadCN + TailwindCSS）
+│   ├── ai/                        # AI 集成工具（AI SDK）
+│   └── schema/                    # 应用共享模式（Drizzle ORM）
 │   
-└── docs/                          # Documentation (Fumadocs + Nextjs)
+└── docs/                          # 文档（Fumadocs + Nextjs）
 ```
 
-## High-level overview
+## 高层概述
 
-### Visual editing
+### 可视化编辑
 
-Onlook is technically a browser that points to your localhost running the app. It can manipulate the DOM like a Chrome Devtool, and all these changes are injected into the page through a CSS stylesheet or DOM manipulation. The changes are non-persistent until written to code.
+Onlook 本质上是一个指向本地运行应用的浏览器。它可以像 Chrome Devtool 一样操作 DOM，所有这些更改通过 CSS 样式表或 DOM 操作注入到页面中。这些更改在写入代码之前是非持久化的。
 
-### Write to code
+### 写入代码
 
-To translate the changes to code, we inject an attribute into the DOM elements at build-time that points back to the code like a sourcemap. The attribute gives us the location of the code block, and the component scope. We then find the code, parse it into an AST, inject the styles, then write it back.
+为了将更改转换为代码，我们在构建时向 DOM 元素注入一个属性，类似 sourcemap，指向代码位置。该属性提供代码块的位置和组件作用域。随后我们找到对应代码，解析成 AST，注入样式，然后写回代码。
 
-### Framework support
+### 框架支持
 
-This technique is framework agnostic as we can swap in a different compiler for another framework. It can work for any codebase as we’re just using open standards that don’t require any custom code. The code generated is written directly into your codebase, locally, so you can always take the output without being locked-in to the tool.
+此技术与框架无关，因我们可以为其他框架替换不同的编译器。它可以应用于任何代码库，因为仅使用了不需自定义代码的开放标准。生成的代码直接写入你的本地代码库，因此你可以随时使用输出，不会被工具锁定。
 
-### Actions
+### 操作（Actions）
 
-All the changes made are stored as actions. This allows them to be serialized, stored, and reproduced. We did it this way so eventually, we can introduce online collaboration or let an agent generate actions. To do this, we’d just need to serve the locally running page and resolve incoming actions.
+所有更改以操作的形式存储，使其可序列化、存储和重现。这样做的目的是未来可以支持在线协作或让智能代理生成操作。要实现这一点，我们只需服务本地运行的页面并解析传入的操作。
 
+### 画布工作原理
 
-### How the canvas works
+![画布架构](/images/canvas-architecture.png)
 
-![Canvas Architecture](/images/canvas-architecture.png)
+### 编辑工作原理
 
-### How edits work
-How edits happen between the DOM, and writing to code
+编辑操作如何在 DOM 与写入代码间协作
 
-Walkthrough video: https://youtu.be/aGUD9xS1XvA
+讲解视频：https://youtu.be/aGUD9xS1XvA
 
-Timestamps: 
+时间点：
 
-* [00:00](https://www.youtube.com/watch?v=aGUD9xS1XvA&t=0s) Intro
-* [00:15](https://www.youtube.com/watch?v=aGUD9xS1XvA&t=15s) Editing element 
-* [00:56](https://www.youtube.com/watch?v=aGUD9xS1XvA&t=56s) How the edits work
-* [02:10](https://www.youtube.com/watch?v=aGUD9xS1XvA&t=130s) Other details
+* [00:00](https://www.youtube.com/watch?v=aGUD9xS1XvA&t=0s) 介绍
+* [00:15](https://www.youtube.com/watch?v=aGUD9xS1XvA&t=15s) 编辑元素
+* [00:56](https://www.youtube.com/watch?v=aGUD9xS1XvA&t=56s) 编辑如何工作
+* [02:10](https://www.youtube.com/watch?v=aGUD9xS1XvA&t=130s) 其他细节
 
-![Edit Loop](/images/edit-loop.png)
+![编辑循环](/images/edit-loop.png)
 
-## References
+## 参考资料
 
-Old electron architecture doc. Still relevant, replace webview with iframe: https://github.com/onlook-dev/desktop/wiki/Architecture
+旧的 electron 架构文档。仍然适用，将 webview 替换为 iframe：https://github.com/onlook-dev/desktop/wiki/Architecture

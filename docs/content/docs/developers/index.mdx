@@ -1,73 +1,74 @@
 ---
-title: Developer Docs & Contributing
-description: Technical documentation for Onlook
+title: 开发者文档与贡献
+description: Onlook 的技术文档
 ---
 
-# Developer Docs & Contributing
+# 开发者文档与贡献
 
-This section provides technical documentation for developers who want to understand Onlook's architecture, contribute to the project, or extend its functionality.
+本节提供给想了解 Onlook 架构、为项目贡献代码或扩展功能的开发者技术文档。
 
-## Overview
+## 概览
 
-Onlook is structured as a monorepo with several interconnected apps and packages, primarily built using Next.js, React, TypeScript, and Vite.
+Onlook 采用 monorepo 结构，包含若干相互关联的应用和包，主要使用 Next.js、React、TypeScript 和 Vite 构建。
 
-## Contributing to Onlook
+## 为 Onlook 贡献代码
 
-We welcome contributions to Onlook! This guide will help you get started with contributing to the project.
+我们欢迎为 Onlook 贡献代码！本指南将帮助你开始为项目贡献。
 
-When contributing to this repository, please first discuss the change you wish to make via [issues](https://github.com/onlook-dev/onlook/issues),
-[Discord](https://discord.gg/hERDfFZCsH), [email](mailto:contact@onlook.com), or any other method with the owners of this repository before making a change. 
+在向本仓库贡献代码之前，请先通过[issues](https://github.com/onlook-dev/onlook/issues)、[Discord](https://discord.gg/hERDfFZCsH)、[电子邮件](mailto:contact@onlook.com)或其他方式，与本仓库拥有者讨论你想进行的更改。
 
-Please note we have a [code of conduct](https://github.com/onlook-dev/onlook/blob/main/CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
+请注意，我们有[行为准则](https://github.com/onlook-dev/onlook/blob/main/CODE_OF_CONDUCT.md)，请在所有项目互动中遵守。
 
-### Running the project locally
-You can build the project from source using instructions [here](/developers/running-locally).
+### 本地运行项目
 
-### Pull Request Process
+你可以按照[这里](/developers/running-locally)的说明从源码构建项目。
 
-1. To create a Pull Request (PR), [create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) of the project. 
+### 提交拉取请求流程
+
+1. 要创建拉取请求（PR），请[先 Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) 本项目。
 
 ![fork](/images/contribute-fork.png)
 
-2. Create your changes in your fork and [open a PR from that fork.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
+2. 在你 Fork 的仓库中进行更改，并[从该 Fork 创建拉取请求。](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
 
 ![contribute](/images/contribute-open-pr.png)
 
-3. Update the PR description with details of the changes. Link the issue if relevant.
+3. 更新拉取请求描述，说明更改内容。如相关，链接对应 issue。
 
-4. Be sure to check the box to "Allow edits from maintainer". This allows maintainers to update your PR if necessary which speeds up the review process. [See more here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
+4. 勾选“允许维护者编辑”（Allow edits from maintainer）复选框。这样维护者可以在必要时更新你的 PR，加快审核流程。[详情查看](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)。
 
 ![allow edits](/images/contribute-allow-edits.png)
 
-5. Request a review of one of the maintainers. Once accepted, they will be able to merge your PR. 
+5. 请求一位维护者审查。审核通过后，他们将合并你的 PR。
 
-### Style guide
+### 代码风格指南
 
-We try to follow guidelines from [Clean Code](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29) and the boy scoute rule:
+我们尽量遵循 [Clean Code](https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29) 指南和童子军规则：
 
-"Leave the code cleaner, not messier, than how you found it". 
+“让代码比你接手时更干净，而不是更乱”。
 
-### Testing
-We use [Bun](https://bun.sh/) for testing.
+### 测试
+
+我们使用 [Bun](https://bun.sh/) 进行测试。
 
 ```bash
 bun test
 ```
 
-### Linting
+### 代码规范检查
 
-We use [ESLint](https://eslint.org/) for linting and [Prettier](https://prettier.io/) for formatting. This runs on every commit.
+我们使用 [ESLint](https://eslint.org/) 进行代码规范检查，使用 [Prettier](https://prettier.io/) 进行格式化。此操作会在每次提交时执行。
 
 ```bash
 bun lint
 bun format
 ```
 
-### Type safety
+### 类型安全
 
-We use [TypeScript](https://www.typescriptlang.org/) for type safety.
+我们使用 [TypeScript](https://www.typescriptlang.org/) 保证类型安全。
 
-To check types of the web client, run:
+要检查 web 客户端的类型，运行：
 ```bash
 cd apps/web/client && bun run typecheck
 ```

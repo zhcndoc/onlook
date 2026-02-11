@@ -1,0 +1,6 @@
+{
+    "app_dir": "/",
+    "install_command": "cd docs && bun install",
+    "build_command": "cd docs && bun run build",
+    "start_command": "cd docs && bun run start"
+}

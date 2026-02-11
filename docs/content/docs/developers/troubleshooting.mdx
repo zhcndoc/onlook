@@ -1,46 +1,46 @@
 ---
-title: Troubleshooting
-description: Troubleshooting common issues
+title: 故障排除
+description: 解决常见问题
 ---
 
-# Common Issues
+# 常见问题
 
-### Codesandbox Preview
+### Codesandbox 预览
 
-Codesandbox may ask you to confirm to proceed. You can click the button by switching to Preview mode in onlook, and click the "Yes, proceed to preview" link and switch back. The UI should render properly inside the iframe after that.
+Codesandbox 可能会要求你确认以继续。你可以通过切换到 onlook 中的预览模式，点击“是，继续预览”链接，然后切换回来。之后，UI 应该会在 iframe 内正确渲染。
 
-![Codesandbox confirmation mode](/images/csb-proceed-to-preview.png)
+![Codesandbox 确认模式](/images/csb-proceed-to-preview.png)
 
-![Switch to Preview mode](/images/visual-switch-to-preview.png)
+![切换到预览模式](/images/visual-switch-to-preview.png)
 
-### Authentication Issues
+### 认证问题
 
-If you encounter issues with reloading pages and being unauthenticated then check your node version, install a more recent version, re-install dependencies and restart the project.
-Minimum version `v20.16.0` or latest is recommended.
+如果你遇到重载页面后未认证的问题，请检查你的 Node 版本，安装较新的版本，重新安装依赖并重启项目。
+推荐最低版本为 `v20.16.0` 或更高版本。
 
-Avoid version `v20.11.0` of Node as it has shown this issue in the past.
+避免使用 Node 版本 `v20.11.0`，因为该版本曾出现过此问题。
 
 ```bash
 node --version
 ```
 
-You may have to delete cookies to clear the authentication state.
+你可能需要删除 cookies 以清除认证状态。
 
-![Delete cookies](/images/delete-cookies.png)
+![删除 cookies](/images/delete-cookies.png)
 
-### "Column not found" error
+### “找不到列”错误
 
-If you encounter issues such as "Column not found" error, your database may be out of sync with the schema. There are 2 things to try to get it back in sync:
+如果你遇到类似“找不到列”的错误，说明你的数据库可能与架构不同步。可以尝试以下两种方法使其重新同步：
 
-1. Run `bun db:push` to push the schema to the database. If there are conflicts, you can try step 2.
-2. Run `bun db:reset` to fully reset the database and re-run the migrations. WARNING: This will delete all data in the database.
+1. 运行 `bun db:push` 将架构推送到数据库。如果存在冲突，可以尝试第二步。
+2. 运行 `bun db:reset` 完全重置数据库并重新运行迁移。警告：这会删除数据库中的所有数据。
 
-### Testing the Preload Script
+### 预加载脚本测试
 
-If you want to update the preload script and test it with Onlook, follow these steps:
+如果你想更新预加载脚本并在 Onlook 中测试，按照以下步骤进行：
 
-1. Run bun `bun run dev` from the root of the project.
-2. Copy the file `apps/web/client/public/onlook-preload-script.js` into to `public/onlook-preload-script.js` in the code tab in onlook or the codesandbox interface.
-3. Refresh the localhost tab. You should now be able to test the preload script.
+1. 在项目根目录运行 `bun run dev`。
+2. 将文件 `apps/web/client/public/onlook-preload-script.js` 复制到 onlook 或 codesandbox 接口代码标签中的 `public/onlook-preload-script.js`。
+3. 刷新 localhost 标签页。现在你应该能够测试预加载脚本。
 
-If you want to update the preload script and test any changes, you need to refresh the localhost tab.
+如果你想更新预加载脚本并测试任何更改，需要刷新 localhost 标签页。
