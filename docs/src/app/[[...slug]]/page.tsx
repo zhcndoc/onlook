@@ -29,6 +29,7 @@ export default async function Page(props: {
                     })}
                 />
             </DocsBody>
+            <div className="wwads-cn wwads-horizontal w-full my-4" data-id="354"></div>
             <EditGitHub filePath={filePath} />
         </DocsPage>
     );
