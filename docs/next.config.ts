@@ -10,6 +10,7 @@ const withMDX = createMDX();
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,
+    output: 'standalone',
 };
 
 if (process.env.NODE_ENV === 'development') {
