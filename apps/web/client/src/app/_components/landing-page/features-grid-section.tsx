@@ -5,50 +5,50 @@ export function FeaturesGridSection() {
         <div className="w-full max-w-6xl mx-auto py-32 px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-20">
                 <div>
-                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">Component Library</h3>
-                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">Unified components for design and code</p>
+                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">你的真实组件</h3>
+                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">使用工程师构建的组件进行设计</p>
                     <p className="text-foreground-secondary text-regular text-balance leading-relaxed">
-                        Create reusable components that work across your project. Build once, use everywhere. Components maintain their style and behavior while giving you control of content.
+                        使用团队已经创建的按钮、卡片和布局，而不是通用 HTML。你的实际设计系统已就绪，可直接拖到画布上。
                     </p>
                 </div>
-                
+
                 <div>
-                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">Theming &amp; Branding</h3>
-                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">Centralized Design &amp; Style Management</p>
+                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">为团队协作打造</h3>
+                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">实时协作</p>
                     <p className="text-foreground-secondary text-regular text-balance leading-relaxed">
-                        Manage color palettes, typography scales, and design tokens through a centralized system. Define your design language once, apply it consistently across your project.
+                        分享画布、添加画布批注，共同设计并产出真实 PR。无需再为“现在该怎么分享？”而发愁。
                     </p>
                 </div>
-                
+
+                <div>
+                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">交付 PR，而非原型</h3>
+                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">修改直接成为拉取请求</p>
+                    <p className="text-foreground-secondary text-regular text-balance leading-relaxed">
+                        你的修改会成为真实 PR，由工程师审查并合并，无需交接、转换，也不用根据规格说明重建。
+                    </p>
+                </div>
+
                 <div>
                     <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">Layer Management</h3>
-                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">Precise control over every element</p>
+                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">浏览组件树</p>
                     <p className="text-foreground-secondary text-regular text-balance leading-relaxed">
-                        Navigate your React component tree through a visual layer panel. Select, organize, and control components with precision. No more hunting through JSX to find the element you want to edit.
+                        在可视化图层面板中查看 React 组件层级。点击任意图层即可在画布上选中，无需再翻找 JSX。
                     </p>
                 </div>
-                
+
                 <div>
-                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">Version History</h3>
-                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">Auto save, history and version control</p>
+                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">适配你的代码库</h3>
+                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">连接现有项目</p>
                     <p className="text-foreground-secondary text-regular text-balance leading-relaxed">
-                        Roll-back anytime! Onlook automatically saves project snapshots so you can experiment with confidence.
+                        连接现有的 React 或 Next.js 项目，无需重建或迁移，几分钟内即可开始设计。
                     </p>
                 </div>
-                
+
                 <div>
-                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">React Templates</h3>
-                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">Bring your own projects into Onlook or start fresh</p>
+                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">版本历史</h3>
+                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">随时找回进度</p>
                     <p className="text-foreground-secondary text-regular text-balance leading-relaxed">
-                        Onlook works with any React next.js website styled with Tailwind. Import your existing codebase and start editing visually, or begin with a new project.
-                    </p>
-                </div>
-                
-                <div>
-                    <h3 className="text-foreground-secondary text-small uppercase tracking-wider mb-4">Open Source</h3>
-                    <p className="text-foreground-primary text-lg md:text-xl font-light mb-6 text-balance">Built with the Community</p>
-                    <p className="text-foreground-secondary text-regular text-balance leading-relaxed">
-                        <a href="https://github.com/Onlook/Onlook-dev" target="_blank" rel="noopener noreferrer" className="underline">Browse our GitHub repo</a> to understand how Onlook works, contribute improvements, or customize it for your team's needs.
+                        Onlook 会自动保存项目快照。放心尝试，只需点击一次即可回退到任意历史版本。
                     </p>
                 </div>
             </div>

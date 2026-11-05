@@ -5,15 +5,15 @@ import { DirectEditingInteractive } from '../../shared/mockups/direct-editing-in
 
 export function DirectEditingBlock() {
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
             <DirectEditingInteractive />
             <div className="flex flex-row items-start gap-8 w-full">
                 <div className="flex flex-col items-start w-1/2">
                     <div className="mb-2"><Icons.DirectManipulation className="w-6 h-6 text-foreground-primary" /></div>
-                    <span className="text-foreground-primary text-largePlus font-light">Direct editing</span>
+                    <span className="text-foreground-primary text-largePlus font-light">画布操作</span>
                 </div>
-                <p className="text-foreground-secondary text-regular text-balance w-1/2">Drag-and-drop, rearrange, scale, and more with elements directly in the editor.</p>
+                <p className="text-foreground-secondary text-regular text-balance w-1/2">直接在画布上拖动、调整大小和排列元素，即时查看真实代码中的变化。</p>
             </div>
         </div>
     );
-}     
+}

@@ -308,36 +308,33 @@ export function WhatCanOnlookDoSection() {
                 <h2 className="text-foreground-primary text-6xl text-right leading-[1.1] font-light mb-20">...and so<br />much more</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-x-16 gap-y-20">
                     <div>
-                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">Import from GitHub or locally</div>
-                        <div className="text-foreground-secondary text-regular text-balance">Bring your existing React / Next.js / Tailwind codebase and start building</div>
+                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">适配你的代码库</div>
+                        <div className="text-foreground-secondary text-regular text-balance">连接现有的 React、Next.js 或 Vue 项目，无需重建或迁移，几分钟内即可开始设计。</div>
                     </div>
                     <div>
-                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">Collaborate with your team</div>
-                        <div className="text-foreground-secondary text-regular text-balance">Share your project with your team and collaborate on designs in real-time</div>
+                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">为团队协作打造</div>
+                        <div className="text-foreground-secondary text-regular text-balance">分享画布、添加画布批注，协作设计并产出真实 PR。</div>
                     </div>
                     <div>
-                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">Publish your work</div>
-                        <div className="text-foreground-secondary text-regular text-balance">Attach a custom domain and share your work with the world</div>
+                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">直接集成 GitHub</div>
+                        <div className="text-foreground-secondary text-regular text-balance">直接将修改推送到代码仓库，提交前先查看差异。</div>
                     </div>
                     <div>
-                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">Draw-in Layers</div>
-                        <div className="text-foreground-secondary text-regular text-balance">Trace divs and text directly in your designs and create code in real-time</div>
+                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">交付 PR，而非原型</div>
+                        <div className="text-foreground-secondary text-regular text-balance">你的修改会成为真实 PR，由工程师审查并合并，无需交接或转换。</div>
                     </div>
                     <div>
-                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">All your favorite hotkeys</div>
+                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">高效快捷键</div>
                         <div className="text-foreground-secondary text-regular text-balance">
-                            <span className={`transition-all duration-250 mr-1 inline-block ${isShortcutAnimating ? 'blur-sm opacity-50 -translate-x-1' : 'blur-0 opacity-100 translate-x-0'}`}>
-                                {getKeyboardShortcut()}
-                            </span>
-                            and design lightning fast with all your favorite shortcuts
+                            你熟悉的快捷键都能在这里使用，包括 <span className={`transition-all duration-250 inline-block ${isShortcutAnimating ? 'blur-sm opacity-50 -translate-x-1' : 'blur-0 opacity-100 translate-x-0'}`}>{getKeyboardShortcut()}</span> 以及其他常用操作。
                         </div>
                     </div>
                     <div>
-                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">Use Images and media assets</div>
-                        <div className="text-foreground-secondary text-regular text-balance">Manage your graphics and images all from one place</div>
+                        <div className="text-foreground-primary text-regularPlus mb-2 text-balance">在对话中引用任意内容</div>
+                        <div className="text-foreground-secondary text-regular text-balance">将图片、设计稿或文档拖入对话，AI 会以此为上下文，生成更贴合需求的结果。</div>
                     </div>
                 </div>
             </div>
         </>
     );
-} 
+}

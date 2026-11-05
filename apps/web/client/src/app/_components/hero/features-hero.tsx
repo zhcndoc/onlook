@@ -24,7 +24,7 @@ export function FeaturesHero() {
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                     style={{ willChange: 'opacity, filter', transform: 'translateZ(0)' }}
                 >
-                    Visual Editor for React &amp; TailwindCSS Apps
+                    功能
                 </motion.h1>
                 <motion.p
                     className="text-center text-4xl !leading-[1] leading-tight font-light text-balance md:text-6xl"
@@ -33,17 +33,16 @@ export function FeaturesHero() {
                     transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
                     style={{ willChange: 'opacity, filter', transform: 'translateZ(0)' }}
                 >
-                    The React Editor You've Been Waiting For
+                    使用真实组件进行设计
                 </motion.p>
                 <motion.h2
-                    className="text-foreground-secondary mx-auto max-w-xl text-center text-lg"
+                    className="text-foreground-secondary mx-auto max-w-xl text-center text-lg text-balance"
                     initial={{ opacity: 0, filter: 'blur(4px)' }}
                     animate={{ opacity: 1, filter: 'blur(0px)' }}
                     transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
                     style={{ willChange: 'opacity, filter', transform: 'translateZ(0)' }}
                 >
-                    Code as you design. Build React applications visually while Onlook writes
-                    reliable code you can trust, exactly where it needs to go.
+                    连接代码库，在画布上设计，交付 PR。
                 </motion.h2>
                 <motion.div
                     className="mt-8"

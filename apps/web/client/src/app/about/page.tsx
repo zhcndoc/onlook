@@ -78,6 +78,38 @@ export default function AboutPage() {
 
     return (
         <WebsiteLayout showFooter={true}>
+            {/* AI-Friendly Summary Section */}
+            <section className="sr-only" aria-label="关于 Onlook 摘要">
+                <h1>关于 Onlook：打造 React 可视化编辑器的团队</h1>
+                <p>
+                    Onlook 希望消除创意与实现之间的隔阂。我们正在为设计师和开发者搭建桥梁，打造一款可使用 React、Vue 或 Angular 真实组件的可视化编辑器。AI 受设计系统约束，修改会成为可合并的拉取请求。
+                </p>
+                <h2>公司概况</h2>
+                <ul>
+                    <li>24,000 多个 GitHub 星标</li>
+                    <li>90 多位开源贡献者</li>
+                    <li>3 名团队成员</li>
+                    <li>Y Combinator W25</li>
+                    <li>总部位于加利福尼亚州旧金山</li>
+                </ul>
+                <h2>创始人</h2>
+                <ul>
+                    <li>Daniel Farrell — 设计与增长。从事设计十余年，曾是 Bird 的前 100 名员工，并担任增长负责人。</li>
+                    <li>Kiet Ho — 工程。曾任职于 Amazon，并在 ServiceNow 维护设计系统。</li>
+                </ul>
+                <h2>我们的价值观</h2>
+                <ul>
+                    <li>速度 — 以奥运级速度推进，坚持不懈，在执行中制定策略。</li>
+                    <li>韧性 — 面对挑战仍保持前进势头。</li>
+                    <li>再创造 — 以创造力解决问题，不断突破现有水平。</li>
+                    <li>专业 — 为自己的工作感到自豪，以品味和技艺启发他人。</li>
+                </ul>
+                <h2>加入我们</h2>
+                <p>
+                    加入我们的创始团队“The Odyssey”。我们寻找有担当、热爱设计、开发工具或 AI，并追求卓越的人才。招聘流程包括初筛沟通、技术面试、背景推荐和带薪工作试用。
+                </p>
+            </section>
+
             <main className="bg-background text-foreground-primary">
                 {/* Hero Section */}
                 <section className="py-64 bg-black text-foreground-primary">
@@ -107,7 +139,7 @@ export default function AboutPage() {
                                 </div>
                                 {/* Stat 3 */}
                                 <div className="row-start-2 col-start-1 text-left">
-                                    <div className="text-3xl font-light mb-1">2</div>
+                                    <div className="text-3xl font-light mb-1">3</div>
                                     <div className="text-regular text-foreground-tertiary/80">Team members</div>
                                 </div>
                             </div>
@@ -142,7 +174,7 @@ export default function AboutPage() {
                                     </div>
                                     {/* Stat 3 */}
                                     <div className="row-start-2 col-start-1 text-left">
-                                        <div className="text-4xl font-light mb-2">2</div>
+                                        <div className="text-4xl font-light mb-2">3</div>
                                         <div className="text-regularPlus text-foreground-tertiary/80">Team members</div>
                                     </div>
                                 </div>

@@ -12,7 +12,7 @@ interface CTASectionProps {
     showSubtext?: boolean;
 }
 
-export function CTASection({ href, onClick, ctaText = "Bring your team \nto Onlook today", buttonText = "Book a Demo", showSubtext = true }: CTASectionProps = {}) {
+export function CTASection({ href, onClick, ctaText = "准备好告别重复重建了吗？\n把你的设计系统搬上画布。", buttonText = "Book a Demo", showSubtext = true }: CTASectionProps = {}) {
     const router = useRouter();
 
     const handleGetStartedClick = () => {

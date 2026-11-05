@@ -44,6 +44,25 @@ export default function AiFeaturesPage() {
     return (
         <CreateManagerProvider>
             <WebsiteLayout showFooter={true}>
+                {/* AI-Friendly Summary Section */}
+                <section className="sr-only" aria-label="AI 功能摘要">
+                    <h1>Onlook AI 可视化编辑器：使用设计系统和 AI 构建界面</h1>
+                    <p>
+                        Onlook 是一款 AI 驱动的可视化编辑器，可使用你的 React、Vue 或 Angular 真实组件构建前端界面。与通用 AI 代码生成器不同，Onlook 会将 AI 限定在你的设计系统内，包括按钮、卡片和布局。修改会成为可合并的 PR，而不是一次性原型。
+                    </p>
+                    <h2>AI 主要功能</h2>
+                    <ul>
+                        <li>AI 受设计系统约束，不会偏离品牌规范或产生不符合品牌的结果</li>
+                        <li>可视化画布，底层运行真实代码</li>
+                        <li>支持 React、Next.js、Vue、Angular、Svelte</li>
+                        <li>支持 Tailwind、CSS Modules、styled-components</li>
+                        <li>兼容 shadcn/ui、Material UI、Chakra UI、Mantine、Radix UI</li>
+                        <li>直接生成 GitHub PR，修改会成为可合并的拉取请求</li>
+                        <li>团队实时协作</li>
+                        <li>设计师无需编程</li>
+                    </ul>
+                </section>
+
                 <div className="flex h-screen w-screen items-center justify-center" id="hero">
                     <AiFeaturesHero />
                 </div>

@@ -4,10 +4,12 @@
 <img width="800" alt="header image" src="assets/web-preview.png">
 <h3 align="center">Onlook</h3>
   <p align="center">
-    Cursor for Designers
+    <strong>为原生 AI 设计师打造的设计工具，现已开放早期体验。</strong>
     <br />
-    <a href="https://docs.onlook.com"><strong>Explore the docs »</strong></a>
+    Onlook 让你轻松基于代码库进行设计，用 AI 与代码打造出色体验。
     <br />
+    <br />
+    <a href="https://www.onlook.com/waitlist?utm_source=github&utm_medium=readme&utm_campaign=waitlist-2026"><strong>→ 加入候补名单</strong></a>
   </p>
   <p align="center">
     👨‍💻👩‍💻👨‍💻
@@ -50,6 +52,9 @@
 
 </div>
 
+> 这是 Onlook 起步时打造的开源可视化编辑器（Next.js + Tailwind）。我们正在为原生 AI 设计师开发托管版产品，目前可通过上方的[候补名单](https://www.onlook.com/waitlist?utm_source=github&utm_medium=readme&utm_campaign=waitlist-2026)申请早期体验。
+
+
 # An Open-Source, Visual-First Code Editor
 
 Craft websites, prototypes, and designs with AI in Next.js + TailwindCSS. Make
@@ -57,23 +62,12 @@ edits directly in the browser DOM with a visual editor. Design in realtime with
 code. An open-source alternative to Bolt.new, Lovable, V0, Replit Agent, Figma
 Make, Webflow, etc.
 
-### 🚧 🚧 🚧 Onlook is still under development 🚧 🚧 🚧
-
-We're actively looking for contributors to help make Onlook for Web an
-incredible prompt-to-build experience. Check the
-[open issues](https://github.com/onlook-dev/onlook/issues) for a full list of
-proposed features (and known issues), and join our
-[Discord](https://discord.gg/hERDfFZCsH) to collaborate with hundreds of other
-builders.
 
 ## What you can do with Onlook:
 
 - [x] Create Next.js app in seconds
   - [x] Start from text or image
   - [x] Use prebuilt templates
-  - [ ] Import from Figma
-  - [ ] Import from GitHub repo
-  - [ ] Make a PR to a GitHub repo
 - [x] Visually edit your app
   - [x] Use Figma-like UI
   - [x] Preview your app in real-time
@@ -222,10 +216,10 @@ See the [CONTRIBUTING.md](CONTRIBUTING.md) for instructions and code of conduct.
 - Team: [Discord](https://discord.gg/hERDfFZCsH) -
   [Twitter](https://twitter.com/onlookdev) -
   [LinkedIn](https://www.linkedin.com/company/onlook-dev/) -
-  [Email](mailto:contact@onlook.com)
+  [Email](mailto:contact@onlook.com) - [YouTube](https://youtube.com/@onlookdev)
 - Project:
   [https://github.com/onlook-dev/onlook](https://github.com/onlook-dev/onlook)
-- Website: [https://onlook.com](https://onlook.com)
+- Website: [https://onlook.com](https://onlook.com/?utm_source=github&utm_medium=readme&utm_campaign=waitlist-2026)
 
 ## License
 

@@ -44,6 +44,27 @@ export default function BuilderFeaturesPage() {
     return (
         <CreateManagerProvider>
             <WebsiteLayout showFooter={true}>
+                {/* AI-Friendly Summary Section */}
+                <section className="sr-only" aria-label="可视化构建器摘要">
+                    <h1>Onlook 可视化构建器：使用真实 React 组件进行设计</h1>
+                    <p>
+                        Onlook 是适配现有代码库的可视化构建器。你可以在无限画布上使用 React、Vue 或 Angular 真实组件进行设计，设计成果本身就是代码。修改会成为可合并的拉取请求，而不是静态稿。
+                    </p>
+                    <h2>构建器主要功能</h2>
+                    <ul>
+                        <li>无限画布，支持可视化设计，底层运行真实代码</li>
+                        <li>适配现有代码库，无需重建</li>
+                        <li>使用 React、Vue、Angular 真实组件进行设计</li>
+                        <li>设计师熟悉的拖放式界面</li>
+                        <li>可视化控制颜色、间距和字体</li>
+                        <li>实时预览修改</li>
+                        <li>直接生成 GitHub PR</li>
+                        <li>设计师无需编程</li>
+                        <li>支持 Tailwind、CSS Modules、styled-components</li>
+                        <li>兼容 shadcn/ui、Material UI、Chakra UI</li>
+                    </ul>
+                </section>
+
                 <div className="w-screen h-screen flex items-center justify-center" id="hero">
                     <BuilderFeaturesHero />
                 </div>

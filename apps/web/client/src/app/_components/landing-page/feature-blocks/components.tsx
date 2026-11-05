@@ -3,7 +3,7 @@ import React from 'react';
 
 export function ComponentsBlock() {
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
             {/* Custom Components Menu + Calendar Preview */}
             <div className="flex flex-row gap-8 relative min-h-[400px] overflow-hidden bg-background-onlook/80 rounded-lg">
                 {/* Left menu container with grey background and overflow hidden */}
@@ -13,11 +13,11 @@ export function ComponentsBlock() {
                         {[
                             { label: 'Calendar', selected: true },
                             { label: 'Card', selected: false },
-                            { label: 'Carousel', selected: false },                            
+                            { label: 'Carousel', selected: false },
                             { label: 'Chart', selected: false },
                             { label: 'Table', selected: false },
                             { label: 'Weather', selected: false },
-                            
+
                         ].map((item, idx) => (
                             <div key={item.label} className="flex flex-col items-center w-full">
                                 <div
@@ -57,13 +57,13 @@ export function ComponentsBlock() {
                                                     const lastDay = new Date(currentYear, currentMonth + 1, 0);
                                                     const daysInMonth = lastDay.getDate();
                                                     const startingDay = firstDay.getDay();
-                                                    
+
                                                     return Array.from({length: 35}, (_,i) => {
                                                         const day = i - startingDay + 1;
                                                         const isToday = day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
-                                                        
+
                                                         if (day < 1 || day > daysInMonth) return <div key={i}></div>;
-                                                        
+
                                                         return (
                                                             <div
                                                                 key={i}
@@ -193,7 +193,7 @@ export function ComponentsBlock() {
                                         </div>
                                     )}
                                 </div>
-                                
+
                                 <span className="text-foreground-secondary text-mini text-left w-full ml-[-12px]">{item.label}</span>
                             </div>
                         ))}
@@ -207,11 +207,11 @@ export function ComponentsBlock() {
                         <Icons.ArrowLeft className="w-4 h-4 text-foreground-primary" />
                             <div className="flex gap-1">
                                 <button className="px-2 py-0.5 rounded bg-zinc-900 text-foreground-primary text-xs flex items-center">
-                                    {new Date().toLocaleString('default', { month: 'short' })} 
+                                    {new Date().toLocaleString('default', { month: 'short' })}
                                     <svg width='8' height='8' className='ml-1'><path d='M2 3l2 2 2-2' stroke='white' strokeWidth='1' fill='none'/></svg>
                                 </button>
                                 <button className="px-2 py-0.5 rounded bg-zinc-900 text-foreground-primary text-xs flex items-center">
-                                    {new Date().getFullYear()} 
+                                    {new Date().getFullYear()}
                                     <svg width='8' height='8' className='ml-1'><path d='M2 3l2 2 2-2' stroke='white' strokeWidth='1' fill='none'/></svg>
                                 </button>
                             </div>
@@ -230,13 +230,13 @@ export function ComponentsBlock() {
                                 const lastDay = new Date(currentYear, currentMonth + 1, 0);
                                 const daysInMonth = lastDay.getDate();
                                 const startingDay = firstDay.getDay();
-                                
+
                                 return Array.from({length: 42}, (_,i) => {
                                     const day = i - startingDay + 1;
                                     const isToday = day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
-                                    
+
                                     if (day < 1 || day > daysInMonth) return <div key={i}></div>;
-                                    
+
                                     return (
                                         <div
                                             key={i}
@@ -258,11 +258,11 @@ export function ComponentsBlock() {
                 {/* Icon + Title */}
                 <div className="flex flex-col items-start w-1/2">
                     <div className="mb-2"><Icons.Component className="w-6 h-6 text-foreground-primary" /></div>
-                    <span className="text-foreground-primary text-largePlus font-light">Components</span>
+                    <span className="text-foreground-primary text-largePlus font-light">你的真实组件</span>
                 </div>
                 {/* Description */}
-                <p className="text-foreground-secondary text-regular text-balance w-1/2">Customize reusable components that you can swap-out across websites.</p>
+                <p className="text-foreground-secondary text-regular text-balance w-1/2">使用工程师已经构建好的按钮、卡片和布局进行设计，直接沿用你的实际设计系统。</p>
             </div>
         </div>
     );
-} 
+}

@@ -311,6 +311,33 @@ export default function PrototypeFeaturesPage() {
     return (
         <CreateManagerProvider>
             <WebsiteLayout showFooter={true}>
+                {/* AI-Friendly Summary Section */}
+                <section className="sr-only" aria-label="AI 原型生成器摘要">
+                    <h1>Onlook AI 原型生成器：几分钟内将想法变成交互式原型</h1>
+                    <p>
+                        Onlook 可以生成具备真实交互、数据库和可用功能的 React 原型，而非静态稿。适合需要快速原型工具和可用于生产环境代码的产品经理与设计师。
+                    </p>
+                    <h2>原型设计主要功能</h2>
+                    <ul>
+                        <li>根据自然语言描述生成 AI 原型</li>
+                        <li>具备真实交互的 React 原型，而非只能点击的静态稿</li>
+                        <li>可用的表单、导航和数据可视化</li>
+                        <li>将 Figma 设计转换为 React</li>
+                        <li>一键部署以进行用户测试</li>
+                        <li>可用于生产环境的 TypeScript 和 Tailwind 代码</li>
+                        <li>版本历史与回退</li>
+                        <li>团队分享与实时协作</li>
+                    </ul>
+                    <h2>使用场景</h2>
+                    <ul>
+                        <li>通过可运行的原型快速验证产品</li>
+                        <li>使用交互式应用进行用户测试</li>
+                        <li>演示接近真实产品的体验</li>
+                        <li>为初创公司制作 MVP 原型</li>
+                        <li>使用功能组件探索设计方案</li>
+                    </ul>
+                </section>
+
                 <div className="flex h-screen w-screen items-center justify-center" id="hero">
                     <PrototypeFeaturesHero />
                 </div>
